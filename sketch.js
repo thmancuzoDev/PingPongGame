@@ -58,7 +58,6 @@ function draw() {
   libraryColision(xRightPlayer,yRightPlayer);
   scoreGame();
   playersScore();
-  freeTheBall();
 }
 
 function createBall () {
@@ -106,6 +105,9 @@ function libraryColision (x,y) {
   collide2d = collideRectCircle (x, y, wPlayer, hPlayer, xCircle, yCircle, dCircle);
   if (collide2d){
     xCircleSpeed *= -1;
+    // Increase the ball's speed
+    xCircleSpeed *= 1.1; // Adjust the speed increment as desired
+    yCircleSpeed *= 1.1; // Adjust the speed increment as desired
     ballSound.play();
   }
 }
@@ -137,7 +139,7 @@ function resetBallPosition() {
   xCircle = width / 2;
   yCircle = height / 2;
   
-  let angle = random(-PI / 6, PI / 4); // Adjust the angle range as desired
+  let angle = random(-PI / 6, PI / 3); // Adjust the angle range as desired
   let speed = 8; // Adjust the speed as desired
   xCircleSpeed = speed * Math.cos(angle) * (random() > 0.5 ? 1 : -1);
   yCircleSpeed = speed * Math.sin(angle) * (random() > 0.5 ? 1 : -1);
