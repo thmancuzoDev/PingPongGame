@@ -22,7 +22,7 @@ let wPlayer=10;
 let hPlayer=95;
 
 //Left player info
-
+let playerImage;
 let xLeftPlayer=8;
 let yLeftPlayer=160;
 let yLeftPlayerSpeed=10;
@@ -53,6 +53,8 @@ function preload () {
   gameMusic = loadSound('trilha.mp3');
   ballSound = loadSound('raquetada.mp3');
   scoreSound = loadSound('ponto.mp3');
+  leftPlayer = loadImage('web_leftPlayer.png')
+  rightPlayer = loadImage('web_rightPlayer.png')
 }
 
 function draw() {
@@ -60,8 +62,8 @@ function draw() {
   createBall();
   movimentBall();
   screenLimits();
-  createPlayer(xLeftPlayer,yLeftPlayer);
-  createPlayer(xRightPlayer,yRightPlayer);
+  createPlayer(xLeftPlayer,yLeftPlayer, leftPlayer);
+  createPlayer(xRightPlayer,yRightPlayer, rightPlayer);
   controlLeftPlayer();
   computerInteligence();
   libraryColision(xLeftPlayer,yLeftPlayer);
@@ -119,8 +121,8 @@ function screenLimits () {
 
 //PLAYERS
 
-function createPlayer (x,y) {
-  rect(x,y,wPlayer,hPlayer)  
+function createPlayer(x, y, playerImage) {
+  image(playerImage, x, y, wPlayer, hPlayer);
 }
 
 function controlLeftPlayer () {
